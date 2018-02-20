@@ -1,0 +1,80 @@
+Compiler version: 4.8 (R2008a) 
+Warning: Duplicate directory name: D:\mcode\caltrack. 
+mcc -o 'caltrackgui' -W 'WinMain:caltrackgui' -d 'D:\mcode\caltrack\caltrackgui\src' -T 'link:exe' -v -N 'D:\mcode\caltrack\caltrackgui.m'  
+Processing C:\MATLAB\2008a\toolbox\matlab\mcc.enc 
+Processing D:\mcode\caltrack\caltrackgui.fig 
+Processing C:\MATLAB\2008a\toolbox\matlab\guide\guideopts.fig 
+Processing C:\MATLAB\2008a\toolbox\matlab\winfun\actxcontrolselect.fig 
+Processing C:\MATLAB\2008a\toolbox\matlab\winfun\actxcontrolcreateproperty.fig 
+Processing include files... 
+2 item(s) added. 
+Processing directories installed with MCR... 
+The file D:\mcode\caltrack\caltrackgui\src\mccExcludedFiles.log contains a list of functions excluded from the CTF archive. 
+1 item(s) added. 
+Generating MATLAB path for the compiled application... 
+Created 40 path items. 
+Begin validation of MEX files: Fri Apr 18 17:07:27 2008 
+Validating 'C:\MATLAB\2008a\toolbox\compiler\deploy\deploywhich.mexw32'. 
+No conflicting M-file found. 
+Validating 'C:\MATLAB\2008a\toolbox\compiler\deploy\readline.mexw32'. 
+No conflicting M-file found. 
+End validation of MEX files: Fri Apr 18 17:07:27 2008 
+Deleting 2 temporary MEX authorization files. 
+Removing: 'C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mathworks_tmp_5248_8828_5248.auth'. 
+Removing: 'C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mathworks_tmp_5248_19686_5248.auth'. 
+Parsing file "D:\mcode\caltrack\caltrackgui.m" 
+	(Referenced from: "Compiler Command Line"). 
+Parsing file "C:\MATLAB\2008a\toolbox\compiler\deploy\deployprint.m" 
+	(Referenced from: "Compiler Command Line"). 
+Parsing file "C:\MATLAB\2008a\toolbox\compiler\deploy\printdlg.m" 
+	(Referenced from: "Compiler Command Line"). 
+Generating file "D:\mcode\caltrack\caltrackgui\src\caltrackgui_main.c". 
+Generating file "D:\mcode\caltrack\caltrackgui\src\readme.txt". 
+Generating file "D:\mcode\caltrack\caltrackgui\src\caltrackgui_mcc_component_data.c". 
+Executing command: mbuild  -O -v -output "caltrackgui" -I"D:\mcode\caltrack\caltrackgui\src" "D:\mcode\caltrack\caltrackgui\src\caltrackgui_main.c" "D:\mcode\caltrack\caltrackgui\src\caltrackgui_mcc_component_data.c" -link exe -outdir "D:\mcode\caltrack\caltrackgui\src" 
+ This is mbuild Copyright 1984-2006 The MathWorks, Inc. 
+ 
+-> Default options filename found in C:\Documents and Settings\u4crpjs3\Application Data\MathWorks\MATLAB\R2008a 
+---------------------------------------------------------------- 
+->    Options file           = C:\Documents and Settings\u4crpjs3\Application Data\MathWorks\MATLAB\R2008a\compopts.bat 
+->    COMPILER               = lcc 
+->    Compiler flags: 
+         COMPFLAGS           = -c -Zp8 -I"C:\MATLAB\2008a\sys\lcc\include" -noregistrylookup 
+         OPTIMFLAGS          = -DNDEBUG 
+         DEBUGFLAGS          = -g4 
+         arguments           =  -ID:\mcode\caltrack\caltrackgui\src 
+         Name switch         = -Fo 
+->    Pre-linking commands   =  
+->    LINKER                 = lcclnk 
+->    Link directives: 
+         LINKFLAGS           = -tmpdir "D:\mcode\caltrack\caltrackgui\src\." -L"C:\MATLAB\2008a\sys\lcc\lib" -libpath "C:\MATLAB\2008a\extern\lib\win32\lcc" 
+         LINKFLAGSPOST       = mclmcrrt.lib 
+         Name directive      = -o "D:\mcode\caltrack\caltrackgui\src\caltrackgui.exe" 
+         File link directive =  
+         Lib. link directive =  
+         Rsp file indicator  = @ 
+->    Resource Compiler      =  
+->    Resource Linker        =  
+---------------------------------------------------------------- 
+ 
+ 
+--> lcc  -ID:\mcode\caltrack\caltrackgui\src -c -Zp8 -I"C:\MATLAB\2008a\sys\lcc\include" -noregistrylookup -FoC:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\caltrackgui_main.obj -IC:\MATLAB\2008a\extern\include -DNDEBUG D:\mcode\caltrack\caltrackgui\src\caltrackgui_main.c 
+ 
+ 
+--> lcc  -ID:\mcode\caltrack\caltrackgui\src -c -Zp8 -I"C:\MATLAB\2008a\sys\lcc\include" -noregistrylookup -FoC:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\caltrackgui_mcc_component_data.obj -IC:\MATLAB\2008a\extern\include -DNDEBUG D:\mcode\caltrack\caltrackgui\src\caltrackgui_mcc_component_data.c 
+ 
+    Contents of C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\mbuild_tmp.rsp: 
+  C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\caltrackgui_main.obj  C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\caltrackgui_mcc_component_data.obj 
+ 
+ 
+--> lcclnk -o "D:\mcode\caltrack\caltrackgui\src\caltrackgui.exe" -tmpdir "D:\mcode\caltrack\caltrackgui\src\." -L"C:\MATLAB\2008a\sys\lcc\lib" -libpath "C:\MATLAB\2008a\extern\lib\win32\lcc"  @C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\mbuild_tmp.rsp  mclmcrrt.lib 
+ 
+Manually moving caltrackgui.exe to D:\mcode\caltrack\caltrackgui\src\caltrackgui.exe 
+Manually moving caltrackgui.lib to D:\mcode\caltrack\caltrackgui\src\caltrackgui.lib 
+Manually moving caltrackgui.exp to D:\mcode\caltrack\caltrackgui\src\caltrackgui.exp 
+ 
+--> if exist C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\templib.def del C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\templib.def 
+ 
+ 
+--> if exist C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\templib_stub.obj del C:\DOCUME~1\u4crpjs3\LOCALS~1\Temp\mbuild_xPcRkd\templib_stub.obj 
+ 

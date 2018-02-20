@@ -1,0 +1,122 @@
+function mk_ch3dda(grd,file_eta,file_velocity,file_out,varargin)
+%MK_CH3DDA function to create direct-access binary file from CH3D results
+%
+%MK_CH3DA creates binary file from ASCII CH3D eta/velocity files
+%
+%SYNTAX:  mk_ch3dda(grd,file_eta,file_velocity,file_out)
+%         mk_ch3dda(grd,file_eta,file_velocity,file_out,tstart)
+%where,
+%             grd = struct created by load_ch3dgrid
+%        file_eta = filename for surface elevation output
+%   file_velocity = filename for velocity output
+%        file_out = filename for output
+%          tstart = start date/time of simulation
+%                   datenum format or 
+%                   any string-formatted date/time ('8/30/2009 0:00')
+%
+
+%Author Info
+%Jarrell Smith
+%USACE ERDC
+%Coastal and Hydraulics Laboratory
+%8/30/2009
+
+%% Input checking
+error(nargchk(4,5,nargin))
+error(nargoutchk(0,0,nargout))
+
+%% Parameters
+tconv=1/24;  %convert hrs to days
+
+%% Input processing
+%check for file existence
+if ~exist(file_eta,'file')
+    error('File %s does not exist.',file_eta)
+elseif ~exist(file_velocity,'file')
+    error('File %s does not exist.',file_velocity)
+end
+%start time given?
+if nargin==5,
+    t0=datenum(varargin{1});
+    tindx=1; %datenum format
+else
+    t0=0;
+    tindx=0; %elapsed time format
+end
+
+%% Open files
+fid1=fopen(file_eta,'rt');
+fid2=fopen(file_velocity,'rt');
+fid=fopen(file_out,'wb','ieee-le');
+
+%% Read Header Info and check consistency
+fgetl(fid1);fgetl(fid1);fgetl(fid1);
+nc1=fscanf(fid1,'%*s %f',1);
+fgetl(fid2);fgetl(fid2);fgetl(fid2);
+nc2=fscanf(fid2,'%*s %f',1);
+%sizes from grd
+[ni,nj]=size(grd.xc);
+nc=numel(grd.xc);
+%check consistency
+if nc1~=nc2
+    error('WSE and VELOCITY files have unequal number of cells.')
+end
+if nc1 ~= nc
+    error('WSE/VELOCITY files don''t match grid.')
+end
+%read name-card lines
+fscanf(fid1,'%s',1);fgetl(fid1);
+fscanf(fid2,'%s',1);fgetl(fid2);
+
+%% Read files and write to DA
+%dummy value for nt (will write over later)
+nt=0;
+%write da file header
+fwrite(fid,[nt,ni,nj,tindx],'integer*4');
+
+%step through each file and get one timestep at a time
+%read the water-surface info
+fprintf(1,'Loading Timestep: %s','     ');
+fmt1='\b\b\b\b\b%5.0f';
+icont=true;
+k=0;
+while icont
+    k=k+1;
+    fprintf(1,fmt1,k); %progress to screen
+    %read time from each file
+    t1=fscanf(fid1,'%*s %*f %f',1);
+    t2=fscanf(fid2,'%*s %*f %f',1);
+    %check for end of file
+    if isempty(t1) || isempty(t2) 
+        nt=k-1;
+        fseek(fid,0,'bof');
+        fwrite(fid,nt,'integer*4');
+        icont=false;
+        continue
+    end
+    %read eta and uv
+    eta = fscanf(fid1,'%f ',[1,nc1]);
+    uv =fscanf(fid2,'%f',[2,nc2]);
+    %check for time mismatch
+    if t1~=t2
+        error('Time in WSE and VELOCITY files mismatched.')
+    end
+    %check for incomplete eta or uv records
+    if size(eta,2) ~= size(uv,2)
+       nt=k-1;
+    %adjust time based on time format
+    if tindx %time is datenum format
+        t=t1*tconv+t0;
+    else %time is elapsed time from 0
+        t=t1;
+    end
+    %dump data to da file
+    fwrite(fid,t,'float64');       %time
+    fwrite(fid,eta,'float32');     %all etas
+    fwrite(fid,uv(1,:),'float32'); %all u
+    fwrite(fid,uv(2,:),'float32'); %all v
+end
+fprintf(1,'\n')
+fclose(fid1);
+fclose(fid2);
+fclose(fid);

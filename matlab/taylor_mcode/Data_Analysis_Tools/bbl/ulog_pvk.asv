@@ -1,0 +1,14 @@
+function u=ulog_pvk(z,zo,u99)
+%ULOG_PVK computes vertical distribution of velocities by Prandtl-VonKarman
+%         law-of-wall
+%
+% SYTNAX: u = ulog_pvk(z,zo,u99)
+% where,
+%    u = vertical distribution of u, u(z)
+%    z = output locations
+%   zo = hdyraulic roughness
+%  u99 = velocity at boundary layer height
+%
+
+nargchk(3,3,nargin)
+kap=0.4;

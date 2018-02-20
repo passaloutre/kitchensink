@@ -1,0 +1,93 @@
+function s=load_adch5(h5file,n)
+
+%% Parameters
+h5file='v2_particles.h5';
+%retrieve storage addresses and general parameters
+h5=h5info(h5file);
+
+%% Retrieve Static Properties
+pmass=h5varget(h5file,[h5.var.mass,'/Values']);
+source=h5varget(h5file,[h5.var.source,'/Values']);
+time=h5varget(h5file,h5.var.time);
+dn=julian2datenum(h5.reftime+0.5+time/86400);
+sources=unique(source);
+n_sources=length(sources);
+%% Analysis
+%start analysis - loop through time
+%Data slab references
+%Location (all indices are zero-based
+% dim1= position [x,y,z]
+% dim2= particle reference
+% dim3= time reference
+% h5varget(file,data_path,start_ind,count_ind)
+bspc=repmat('\b',1,6);
+fprintf(1,'Processing %g timesteps.\n Timestep:      ',h5.nt);
+for k=1:h5.nt  %k=time index
+   fprintf(1,[bspc,'%6.0f'],k);
+   K=k-1; % zero-based time index for h5 file
+   %get position and time
+   x=h5varget(h5file,h5.var.location,[0,0,K],[1,h5.np,1]);
+   y=h5varget(h5file,h5.var.location,[1,0,K],[1,h5.np,1]);
+   z=h5varget(h5file,h5.var.location,[2,0,K],[1,h5.np,1]);
+   %set all dummy data to nan instead of FillValue
+   in= x==h5.FillValue & y==h5.FillValue;
+   x(in)=nan;
+   y(in)=nan;
+   z(in)=nan;
+   %get particle attributes
+%    state=h5varget(h5file,[h5.var.state,'/Values'],[0,K],[h5.np,1]);
+%    state(in)=0;
+%    state=logical(state);  %convert state variable to logical
+   height=h5varget(h5file,[h5.var.height,'/Values'],[0,K],[h5.np,1]);
+   state=height>0.01;
+   state(in)=false;
+   %determine if particles are inside polygon
+   in1=inpolygon(x,y,poly.x,poly.y);
+   mass.pflag=mass.pflag | in1;
+   for j=1:n_sources,
+      in2=source==sources(j);
+      mass.deposited(j,k)=sum(pmass(in1&in2'&~state'));
+      mass.suspended(j,k)=sum(pmass(in1&in2'&state'));
+   end
+end
+fprintf(1,'\n');
+
+%%% SUBFUNCTIONS %%%
+function h5=h5info(h5file)
+%H5INFO reads appropriate file information for PTM particles file
+%% Get File Info
+fileinfo=hdf5info(h5file);
+toplevel=fileinfo.GroupHierarchy;
+lev1=toplevel.Groups.Name; %Name for level_1
+datnames={toplevel.Groups.Datasets.Name}; %Dataset Names
+attnames={toplevel.Groups.Groups.Name}; %Attribute Names
+%Location Variable
+fi=strfind(datnames,'Locations');
+I=find(~cellfun(@isempty,fi));
+h5.var.location=datnames{I};
+szloc=toplevel.Groups.Datasets(I).Dims;
+h5.np=szloc(2); %number of particles
+h5.nt=szloc(3); %number of times
+h5.FillValue=toplevel.Groups.Datasets(I).FillValue; %dummy value
+%Time Variable
+fi=strfind(datnames,'Times');
+I=find(~cellfun(@isempty,fi));
+h5.var.time=datnames{I};
+%Source Variable
+fi=strfind(attnames,'source');
+I=find(~cellfun(@isempty,fi));
+h5.var.source=attnames{I};
+%State Variable
+fi=strfind(attnames,'state');
+I=find(~cellfun(@isempty,fi));
+h5.var.state=attnames{I};
+%Height Variable
+fi=strfind(attnames,'height');
+I=find(~cellfun(@isempty,fi));
+h5.var.height=attnames{I};
+%Mass Variable
+fi=strfind(attnames,'mass');
+I=find(~cellfun(@isempty,fi));
+h5.var.mass=attnames{I};
+%Get Reftime
+h5.reftime=h5attget(h5file,[lev1,'/Reftime']); %Julian Day (noon start)

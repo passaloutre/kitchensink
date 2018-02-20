@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<project>
+
+  <MATLABPath>
+    <Directory>$(PROJECTDIR)/</Directory>
+    <Directory>$(MATLABROOT)/toolbox/compiler/deploy</Directory>
+    <Directory>D:/MATLAB</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/general</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/ops</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/lang</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/elmat</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/elfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/specfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/matfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/datafun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/polyfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/funfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/sparfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/scribe</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/graph2d</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/graph3d</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/specgraph</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/graphics</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/uitools</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/strfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/imagesci</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/iofun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/audiovideo</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/timefun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/datatypes</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/verctrl</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/codetools</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/helptools</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/winfun</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/demos</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/timeseries</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/hds</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/guide</Directory>
+    <Directory>$(MATLABROOT)/toolbox/matlab/plottools</Directory>
+    <Directory>$(MATLABROOT)/toolbox/local</Directory>
+    <Directory>$(MATLABROOT)/toolbox/shared/controllib</Directory>
+    <Directory>$(MATLABROOT)/toolbox/compiler</Directory>
+    <Directory>$(MATLABROOT)/toolbox/images/images</Directory>
+    <Directory>$(MATLABROOT)/toolbox/images/imuitools</Directory>
+    <Directory>$(MATLABROOT)/toolbox/images/imdemos</Directory>
+    <Directory>$(MATLABROOT)/toolbox/images/iptutils</Directory>
+    <Directory>$(MATLABROOT)/toolbox/shared/imageslib</Directory>
+    <Directory>$(MATLABROOT)/toolbox/images/medformats</Directory>
+    <Directory>$(MATLABROOT)/toolbox/shared/spcuilib</Directory>
+    <Directory>$(MATLABROOT)/toolbox/shared/dastudio</Directory>
+    <Directory>$(MATLABROOT)/toolbox/images/iptformats</Directory>
+    <Directory>$(MATLABROOT)/toolbox/imaq/imaq</Directory>
+    <Directory>$(MATLABROOT)/toolbox/shared/imaqlib</Directory>
+    <Directory>$(MATLABROOT)/toolbox/imaq/imaqdemos</Directory>
+    <Directory>$(MATLABROOT)/toolbox/imaq/imaqblks/imaqblks</Directory>
+    <Directory>$(MATLABROOT)/toolbox/imaq/imaqblks/imaqmasks</Directory>
+    <Directory>$(MATLABROOT)/toolbox/imaq/imaqblks/imaqmex</Directory>
+    <Directory>$(MATLABROOT)/toolbox/shared/testmeaslib</Directory>
+    <Directory>$(MATLABROOT)/toolbox/signal/signal</Directory>
+    <Directory>$(MATLABROOT)/toolbox/signal/sigtools</Directory>
+    <Directory>$(MATLABROOT)/toolbox/signal/sptoolgui</Directory>
+    <Directory>$(MATLABROOT)/toolbox/signal/sigdemos</Directory>
+    <Directory>$(MATLABROOT)/work</Directory>
+    <Directory>D:/mcode</Directory>
+    <Directory>D:/mcode/ODE</Directory>
+    <Directory>D:/mcode/RDADCP</Directory>
+    <Directory>D:/mcode/colormaps</Directory>
+    <Directory>D:/mcode/converters</Directory>
+    <Directory>D:/mcode/econ</Directory>
+    <Directory>D:/mcode/im_analysis</Directory>
+    <Directory>D:/mcode/mexnc</Directory>
+    <Directory>D:/mcode/m_map</Directory>
+    <Directory>D:/mcode/m_map/states</Directory>
+    <Directory>D:/mcode/mpfate</Directory>
+    <Directory>D:/mcode/mpfate/SMSexample_nb03</Directory>
+    <Directory>D:/mcode/mpfate/example</Directory>
+    <Directory>D:/mcode/mpfate/example_nb03</Directory>
+    <Directory>D:/mcode/mpfate/example_ris69b</Directory>
+    <Directory>D:/mcode/oceans</Directory>
+    <Directory>D:/mcode/ptm</Directory>
+    <Directory>D:/mcode/sedtran</Directory>
+    <Directory>D:/mcode/sedtran/Debug</Directory>
+    <Directory>D:/mcode/sedtran/OlderVersions</Directory>
+    <Directory>D:/mcode/sedtran/cerc</Directory>
+    <Directory>D:/mcode/snctools</Directory>
+    <Directory>D:/mcode/stats</Directory>
+    <Directory>D:/mcode/stats/evans</Directory>
+    <Directory>D:/mcode/stfate</Directory>
+    <Directory>D:/mcode/t_tide</Directory>
+    <Directory>$(PROJECTDIR)/adcirc</Directory>
+    <Directory>$(PROJECTDIR)/sedflume</Directory>
+    <Directory>$(PROJECTDIR)/snell</Directory>
+    <Directory>$(PROJECTDIR)/stwave</Directory>
+  </MATLABPath>
+
+  <MCCProperties>
+    <output/>
+    <wrapper>
+      <type>main</type>
+      <component_name>mk_adcda</component_name>
+    </wrapper>
+    <link>exe</link>
+    <create_vb_wrapper>false</create_vb_wrapper>
+    <intermediate_dir>$(PROJECTDIR)/</intermediate_dir>
+    <output_dir>$(PROJECTDIR)/</output_dir>
+    <generate_code_only>false</generate_code_only>
+    <verbose>false</verbose>
+    <MCR_runtime_options>
+      <share_mcr>false</share_mcr>
+    </MCR_runtime_options>
+    <options_file/>
+    <toolboxes_on_path shortcut="all"/>
+    <debug>false</debug>
+    <warning shortcut="default"/>
+    <license_file/>
+  </MCCProperties>
+
+  <file_info>
+    <category name="Main function">
+      <file>$(PROJECTDIR)/adcirc/mk_adcda.m</file>
+    </category>
+    <category name="Other files"/>
+    <category name="C/C++ files"/>
+  </file_info>
+
+</project>
